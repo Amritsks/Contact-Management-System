@@ -7,7 +7,7 @@ export default function ContactForm({ onSuccess }) {
     name: "",
     email: "",
     phone: "",
-    message: "",
+    message: ""
   });
   const [success, setSuccess] = useState("");
 
@@ -19,7 +19,8 @@ export default function ContactForm({ onSuccess }) {
       setSuccess("Contact saved successfully!");
       onSuccess();
       setTimeout(() => setSuccess(""), 3000);
-    } catch (err) {}
+    } catch (err) {
+    }
   };
 
   return (
@@ -36,26 +37,32 @@ export default function ContactForm({ onSuccess }) {
       )}
 
       {["name", "email", "phone"].map((field) => (
-        <input
-          key={field}
-          type={field === "email" ? "email" : "text"}
-          name={field}
-          required
-          value={form[field]}
-          onChange={(e) => setForm({ ...form, [field]: e.target.value })}
-          placeholder={field}
-          className="w-full mb-3 p-2 border rounded"
-        />
-      ))}
+  <input
+    key={field}
+    type={field === "email" ? "email" : "text"}
+    name={field}
+    required
+    value={form[field]}
+    onChange={(e) =>
+      setForm({ ...form, [field]: e.target.value })
+    }
+    placeholder={field}
+    className="w-full mb-3 p-2 border rounded"
+  />
+))}
+
 
       <textarea
-        name="message"
-        required
-        value={form.message}
-        onChange={(e) => setForm({ ...form, message: e.target.value })}
-        placeholder="Message"
-        className="w-full mb-3 p-2 border rounded"
-      />
+  name="message"
+  required
+  value={form.message}
+  onChange={(e) =>
+    setForm({ ...form, message: e.target.value })
+  }
+  placeholder="Message"
+  className="w-full mb-3 p-2 border rounded"
+/>
+
 
       <button className="bg-indigo-600 text-white w-full py-2 rounded">
         Submit
